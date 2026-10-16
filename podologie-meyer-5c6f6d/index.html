@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Website-Entwurf für Podologie Meyer</title>
+<style>
+  :root{--accent:#E9A88B;--ink:#1E2E2C;--bg:#F2F5F3}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.6}
+  .notice{position:sticky;top:0;z-index:5;background:var(--ink);color:#fff;font-size:14px;padding:10px 20px;text-align:center}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+  header{padding:56px 0 30px}
+  h1{font-size:clamp(30px,5vw,54px);line-height:1.08;margin:0 0 14px;letter-spacing:-.01em}
+  .lead{font-size:19px;max-width:60ch;margin:0 0 10px;opacity:.85}
+  .from{margin:16px 0 0;font-size:15px;opacity:.75}
+  .tabs{display:flex;gap:10px;margin:26px 0 30px}
+  .tabs button{font:inherit;font-weight:600;border:2px solid var(--ink);background:transparent;color:var(--ink);padding:10px 20px;border-radius:40px;cursor:pointer}
+  .tabs button[aria-pressed="true"]{background:var(--ink);color:#fff}
+  .tabs button:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+  .browser{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.18),0 0 0 1px rgba(0,0,0,.06);margin-bottom:60px}
+  .bar{height:34px;background:#ECEBE8;display:flex;align-items:center;gap:7px;padding:0 14px}
+  .bar i{width:11px;height:11px;border-radius:50%;background:#D6D3CD}
+  .browser img{display:block;width:100%;height:auto}
+  .phones{display:flex;flex-wrap:wrap;gap:36px;justify-content:center;margin-bottom:60px}
+  .phone{background:#111;border-radius:42px;padding:11px;width:300px;max-width:100%;box-shadow:0 24px 50px rgba(0,0,0,.22)}
+  .phone img{display:block;width:100%;border-radius:32px}
+  [hidden]{display:none!important}
+  @media (max-width:700px){header{padding:32px 0 8px}.lead{font-size:17px}.tabs{margin:18px 0 24px}}
+  footer{border-top:1px solid rgba(0,0,0,.12);padding:26px 0 40px;font-size:14.5px;opacity:.8}
+</style>
+</head>
+<body>
+<div class="notice">Unverbindlicher Designvorschlag. Dies ist nicht die offizielle Website von Podologie Meyer.</div>
+<div class="wrap">
+  <header>
+    <h1>So könnte Ihre Website aussehen, Podologie Meyer</h1>
+    <p class="lead">Mit Ihren Google-Bewertungen, Öffnungszeiten, Kontakt und Anfahrt. Auf dem Computer und auf dem Handy.</p>
+    
+  </header>
+  <div class="tabs" role="group" aria-label="Ansicht wählen">
+    <button type="button" aria-pressed="true" data-view="desk">Computer</button>
+    <button type="button" aria-pressed="false" data-view="mob">Handy</button>
+  </div>
+  <section id="desk">
+    <div class="browser"><div class="bar"><i></i><i></i><i></i></div><img src="desktop.jpg" alt="Gesamte Startseite des Entwurfs in der Computer-Ansicht"></div>
+  </section>
+  <section id="mob" hidden>
+    <div class="phones">
+      <div class="phone"><img src="mobil-1.jpg" alt="Handy-Ansicht, Startbereich"></div>
+      <div class="phone"><img src="mobil-2.jpg" alt="Handy-Ansicht, Leistungen"></div>
+      <div class="phone"><img src="mobil-3.jpg" alt="Handy-Ansicht, Bewertungen"></div>
+    </div>
+  </section>
+  <footer>Fotos sind Beispielbilder und werden durch Ihre eigenen ersetzt. Texte, Leistungen und Farben passe ich gern an.</footer>
+</div>
+<script>
+  function show(view) {
+    document.querySelectorAll(".tabs button").forEach(x => x.setAttribute("aria-pressed", x.dataset.view === view));
+    document.getElementById("desk").hidden = view !== "desk";
+    document.getElementById("mob").hidden = view !== "mob";
+  }
+  document.querySelectorAll(".tabs button").forEach(b => b.addEventListener("click", () => show(b.dataset.view)));
+  if (window.matchMedia("(max-width: 700px)").matches) show("mob");
+</script>
+</body>
+</html>
